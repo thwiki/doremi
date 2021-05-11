@@ -1,0 +1,47 @@
+:host {
+	display: block;
+
+	height: 100%;
+	width: 100%;
+}
+
+.detector__base {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
+}
+
+.detector__spinner {
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	font-size: 6em;
+	margin: -0.5em 0 0 -0.5em;
+	--stroke-width: 0.0625em;
+	--indicator-color: var(--orange);
+	z-index: 600;
+}
+
+.detector__canvas {
+	transform-origin: left top;
+}
+
+.detector__frames {
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	fill: none;
+	stroke-width: 2px;
+}
+
+.detector__frames-eye {
+	stroke: var(--sl-color-success-500);
+}
+.detector__frames-face {
+	stroke: var(--sl-color-primary-500);
+}

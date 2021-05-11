@@ -1,0 +1,110 @@
+:host {
+	display: inline-block;
+}
+
+.doremi-face,
+.koishi-face {
+	position: absolute;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	transform-origin: center;
+	z-index: 10;
+	pointer-events: all !important;
+	user-select: auto !important;
+}
+
+.allow-cursor {
+	.doremi-face,
+	.koishi-face {
+		cursor: pointer;
+	}
+}
+
+.doremi-face {
+	background-image: var(--face);
+}
+/*.koishi-face {
+	background-image: url(https://thwiki.cc/extensions/Doremi/module/faces/koishi_face.png);
+}*/
+
+.resize-handles {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: 2px dashed #808080;
+}
+
+.resize-handle {
+	display: block;
+	font-size: 10px;
+	width: 1em;
+	height: 1em;
+	margin: -0.5em;
+	border: 2px solid #808080;
+	background-color: #fff;
+	position: absolute;
+	z-index: 2;
+}
+
+[data-corner='topleft'] {
+	top: 0;
+	left: 0;
+	cursor: nwse-resize;
+}
+[data-corner='topright'] {
+	top: 0;
+	right: 0;
+	cursor: nesw-resize;
+}
+[data-corner='bottomright'] {
+	bottom: 0;
+	right: 0;
+	cursor: nwse-resize;
+}
+[data-corner='bottomleft'] {
+	bottom: 0;
+	left: 0;
+	cursor: nesw-resize;
+}
+
+.rotate-handle {
+	display: none;
+	position: absolute;
+	font-size: 12px;
+	width: 1em;
+	height: 1em;
+	margin-left: -0.5em;
+	top: -2em;
+	left: 50%;
+	z-index: 3;
+	border-radius: 9999px;
+	border: 1px solid #808080;
+	background-color: #ff0;
+}
+
+.active-face {
+	z-index: 100;
+	.resize-handles {
+		display: block;
+	}
+	.rotate-handle {
+		display: flex;
+	}
+}
+
+.allow-cursor {
+	.rotate-handle {
+		cursor: grab;
+	}
+	&.active-face {
+		&.doremi-face,
+		&.koishi-face {
+			cursor: move;
+		}
+	}
+}

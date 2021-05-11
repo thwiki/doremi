@@ -1,0 +1,36 @@
+{
+	"name": "doremi",
+	"version": "0.1.0",
+	"description": "AI接头工具",
+	"main": "dist/index.cjs.js",
+	"module": "dist/custom-elements/index.js",
+	"es2015": "dist/esm/index.mjs",
+	"es2017": "dist/esm/index.mjs",
+	"types": "dist/custom-elements/index.d.ts",
+	"collection": "dist/collection/collection-manifest.json",
+	"collection:main": "dist/collection/index.js",
+	"unpkg": "dist/doremi/doremi.esm.js",
+	"files": [
+		"dist/",
+		"loader/"
+	],
+	"scripts": {
+		"build": "stencil build --docs",
+		"start": "stencil build --dev --watch --serve",
+		"test": "stencil test --spec --e2e",
+		"test.watch": "stencil test --spec --e2e --watchAll",
+		"generate": "stencil generate"
+	},
+	"dependencies": {
+		"@flatten-js/core": "^1.2.22",
+		"@shoelace-style/shoelace": "^2.0.0-beta.39",
+		"@stencil/core": "^2.5.2",
+		"@stencil/less": "^1.0.0",
+		"file-drop-element": "^1.0.1"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^15.0.1",
+		"@types/resize-observer-browser": "^0.1.5"
+	}
+}
