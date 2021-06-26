@@ -55,11 +55,11 @@ export async function init(href: string) {
 		return loaded;
 	} else {
 		return new Promise(
-			resolve =>
+			(resolve) =>
 				(CV['onRuntimeInitialized'] = async () => {
 					loaded = await loadCascadeClassifier(href);
 					resolve(loaded);
-				}),
+				})
 		);
 	}
 }
@@ -100,19 +100,19 @@ export async function detect(data: Uint8ClampedArray, width: number, height: num
 function preprocess(image: Image): Doremi.Data {
 	const covers: Doremi.Cover[] = [];
 
-	const faces = image.faces.map(face => {
+	const faces = image.faces.map((face) => {
 		return new Flatten.Box(face.x, face.y, face.x + face.width, face.y + face.height);
 	});
-	let eyes = image.eyes.map(eye => {
+	let eyes = image.eyes.map((eye) => {
 		return new Flatten.Box(eye.x, eye.y, eye.x + eye.width, eye.y + eye.height);
 	});
 
-	const centerX = faces.length <= 1 ? image.width / 2 : faces.map(face => face.center.x).reduce((a, b) => a + b, 0) / faces.length;
+	const centerX = faces.length <= 1 ? image.width / 2 : faces.map((face) => face.center.x).reduce((a, b) => a + b, 0) / faces.length;
 
 	const usedEyes = new WeakSet();
 
-	faces.forEach(face => {
-		const containEyes = eyes.filter(eye => !usedEyes.has(eye) && Flatten.Relations.inside(eye, face));
+	faces.forEach((face) => {
+		const containEyes = eyes.filter((eye) => !usedEyes.has(eye) && Flatten.Relations.inside(eye, face));
 		const transform = [];
 
 		if (containEyes.length === 0) {
@@ -152,12 +152,12 @@ function preprocess(image: Image): Doremi.Data {
 		//const containEyes = eyes.filter((eye) => face.intersect(eye));
 	});
 
-	eyes = eyes.filter(eye => !usedEyes.has(eye));
+	eyes = eyes.filter((eye) => !usedEyes.has(eye));
 
 	if (eyes.length > 1) {
 		const eyePairs = [];
-		const eyePolys = eyes.map(eye => new Flatten.Polygon(eye.toPoints()));
-		const eyeSizes = eyes.map(eye => Math.max(eye.xmax - eye.xmin, eye.ymax - eye.ymin));
+		const eyePolys = eyes.map((eye) => new Flatten.Polygon(eye.toPoints()));
+		const eyeSizes = eyes.map((eye) => Math.max(eye.xmax - eye.xmin, eye.ymax - eye.ymin));
 
 		for (let i = 0; i < eyePolys.length; i++) {
 			const eye1 = eyePolys[i];
@@ -196,7 +196,7 @@ function preprocess(image: Image): Doremi.Data {
 				leftEye.xmin - dir.length / 2,
 				Math.min(leftEye.ymin, rightEye.ymin),
 				rightEye.xmax + dir.length / 2,
-				Math.max(leftEye.ymax, rightEye.ymax),
+				Math.max(leftEye.ymax, rightEye.ymax)
 			);
 			const addHeight = face.xmax - face.xmin - (face.ymax - face.ymin);
 			face.ymin -= addHeight * 0.3;

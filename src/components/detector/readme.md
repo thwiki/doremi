@@ -1,7 +1,5 @@
 # doremi-detector
 
-
-
 <!-- Auto Generated Below -->
 
 

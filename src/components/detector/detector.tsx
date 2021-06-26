@@ -224,8 +224,8 @@ export class DoremiDetector {
 			}
 
 			this.loading = false;
-			return new Promise<Blob>(resolve => {
-				canvas.toBlob(blob => (resolve(blob), null), 'image/jpeg', 0.95);
+			return new Promise<Blob>((resolve) => {
+				canvas.toBlob((blob) => (resolve(blob), null), 'image/jpeg', 0.95);
 			});
 		} catch (e: unknown) {
 			this.loading = false;
@@ -244,7 +244,7 @@ export class DoremiDetector {
 			<Host onDragStart={this.preventDefault}>
 				<div part="base" class="detector__base">
 					<doremi-editor
-						ref={el => {
+						ref={(el) => {
 							this.editorElement = el;
 							el.setData(this.data);
 						}}
@@ -253,7 +253,7 @@ export class DoremiDetector {
 					>
 						<canvas
 							class="detector__canvas"
-							ref={el => {
+							ref={(el) => {
 								if (this.canvasElement && this.canvasElement !== el) this.resizeObserver.unobserve(this.canvasElement);
 								this.canvasElement = el;
 								this.resizeObserver.observe(this.canvasElement);
@@ -262,11 +262,11 @@ export class DoremiDetector {
 						></canvas>
 						<svg class="detector__frames" viewBox={`0 0 ${this.width} ${this.height}`}>
 							{this.showFrame &&
-								this.data?.eyes?.map(eye => (
+								this.data?.eyes?.map((eye) => (
 									<rect class="detector__frames-eye" x={eye.x} y={eye.y} height={eye.height} width={eye.width} />
 								))}
 							{this.showFrame &&
-								this.data?.faces?.map(face => (
+								this.data?.faces?.map((face) => (
 									<rect class="detector__frames-face" x={face.x} y={face.y} height={face.height} width={face.width} />
 								))}
 						</svg>

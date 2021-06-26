@@ -54,7 +54,7 @@ export class DoremiEditor {
 		const slot = this.host.shadowRoot.querySelector('slot');
 		this.imageElements = slot.assignedElements({ flatten: true }) as ContentElement[];
 		const firstElement = this.imageElements.find(
-			(imageElement): imageElement is Exclude<ContentElement, SVGElement> => !(imageElement instanceof SVGElement),
+			(imageElement): imageElement is Exclude<ContentElement, SVGElement> => !(imageElement instanceof SVGElement)
 		);
 		this.width = firstElement?.width ?? 0;
 		this.height = firstElement?.height ?? 0;
@@ -210,7 +210,7 @@ export class DoremiEditor {
 	}
 
 	private formatData(data: Doremi.Data) {
-		data?.covers?.forEach(cover => {
+		data?.covers?.forEach((cover) => {
 			cover.rotate = parseFloat(cover.transform?.match(/rotate\(([\-\d\.]+)/)?.[1] ?? '0');
 			cover.flip = !!cover.transform?.includes('scaleX(-1)');
 		});
@@ -268,7 +268,7 @@ export class DoremiEditor {
 				onDragStart={this.preventDefault}
 			>
 				<slot onSlotchange={this.handleSlotChange}></slot>
-				{this.data?.covers.map(cover => {
+				{this.data?.covers.map((cover) => {
 					return (
 						<div
 							class={
@@ -284,9 +284,9 @@ export class DoremiEditor {
 								width: this.width * (cover.width / this.data.width) + 'px',
 								height: this.height * (cover.height / this.data.height) + 'px',
 							}}
-							onClick={e => this.handleSelect(e, cover)}
-							onMouseDown={e => this.handleDrag(e, cover)}
-							onTouchStart={e => this.handleDrag(e, cover)}
+							onClick={(e) => this.handleSelect(e, cover)}
+							onMouseDown={(e) => this.handleDrag(e, cover)}
+							onTouchStart={(e) => this.handleDrag(e, cover)}
 						>
 							<div
 								class="resize-handles"
@@ -299,8 +299,8 @@ export class DoremiEditor {
 							</div>
 							<div
 								class="rotate-handle"
-								onMouseDown={e => this.handleDragRotate(e, cover)}
-								onTouchStart={e => this.handleDragRotate(e, cover)}
+								onMouseDown={(e) => this.handleDragRotate(e, cover)}
+								onTouchStart={(e) => this.handleDragRotate(e, cover)}
 							></div>
 						</div>
 					);

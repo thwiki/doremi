@@ -198,7 +198,7 @@ export class AppRoot {
 				</div>
 				<file-drop part="drop" class="app__drop" onFiledrop={this.handleFiledrop} accept="image/*">
 					<doremi-detector
-						ref={el => (this.detectorElement = el)}
+						ref={(el) => (this.detectorElement = el)}
 						onSrcChange={this.handleDetectorChange}
 						onLoadingChange={this.handleDetectorChange}
 						onShowFrameChange={this.handleDetectorChange}
@@ -220,7 +220,7 @@ export class AppRoot {
 				<input
 					part="browse"
 					class="app__browse"
-					ref={el => (this.browseElement = el)}
+					ref={(el) => (this.browseElement = el)}
 					type="file"
 					accept="image/*"
 					onChange={this.handleFileSelect}

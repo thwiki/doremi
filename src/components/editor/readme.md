@@ -1,7 +1,5 @@
 # doremi-editor
 
-
-
 <!-- Auto Generated Below -->
 
 
