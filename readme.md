@@ -4,7 +4,7 @@
 
 ![Doremi Sweet](./src/components/editor/assets/doremi_face.png)
 
-[网站](https://tool.thwiki.cc/doremi/)
+[网站](https://doremi.thwiki.cc/)
 
 基于计算机视觉的二次元 ACG 图片自动接头工具，通过 [OpenCV](https://opencv.org/) [Javascript](./src/opencv/opencv-4.3.0.js) 实现纯客户端处理，省却上传图片及服务器处理的时间。
 
