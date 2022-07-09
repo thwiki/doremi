@@ -2,5 +2,11 @@
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"github": {
 		"silent": true
-	}
+	},
+	"headers": [
+		{
+			"source": "/opencv/(.*)",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=31556952, s-maxage=31556952, immutable" }]
+		}
+	]
 }
