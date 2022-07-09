@@ -172,7 +172,7 @@ export class AppRoot {
 			<Host onDragStart={this.preventDefault} onDrop={this.preventDefault} onDragOver={this.preventDefault}>
 				<div part="controls-container" class="app__controls-container">
 					<sl-button-group part="controls" class="app__controls">
-						<sl-button class="app__button-index" href="./" type="info">
+						<sl-button class="app__button-index" href="./" variant="neutral">
 							<sl-icon slot="prefix" class="app__logo"></sl-icon>AI接头工具
 						</sl-button>
 						<sl-button class="app__button-browse" onClick={this.handleBrowseButtonClick} disabled={this.disableFirstAction}>
@@ -191,7 +191,7 @@ export class AppRoot {
 						<sl-button class="app__button-save" onClick={this.handleSaveButtonClick} disabled={this.disableSecondAction}>
 							<sl-icon slot="prefix" name="download"></sl-icon>保存图片
 						</sl-button>
-						<sl-button class="app__button-about" type="info" onClick={this.handleAboutButtonClick}>
+						<sl-button class="app__button-about" variant="neutral" onClick={this.handleAboutButtonClick}>
 							<sl-icon slot="prefix" name="info-circle"></sl-icon>关于
 						</sl-button>
 					</sl-button-group>

@@ -30,6 +30,10 @@ export namespace Components {
         "width": number;
     }
 }
+export interface DoremiDetectorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDoremiDetectorElement;
+}
 declare global {
     interface HTMLAppAboutElement extends Components.AppAbout, HTMLStencilElement {
     }
@@ -72,19 +76,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when an error occurred.
          */
-        "onDetectorError"?: (event: CustomEvent<any>) => void;
+        "onDetectorError"?: (event: DoremiDetectorCustomEvent<any>) => void;
         /**
           * Emitted when loading changes.
          */
-        "onLoadingChange"?: (event: CustomEvent<any>) => void;
+        "onLoadingChange"?: (event: DoremiDetectorCustomEvent<any>) => void;
         /**
           * Emitted when show-frame changes.
          */
-        "onShowFrameChange"?: (event: CustomEvent<any>) => void;
+        "onShowFrameChange"?: (event: DoremiDetectorCustomEvent<any>) => void;
         /**
           * Emitted when src changes.
          */
-        "onSrcChange"?: (event: CustomEvent<any>) => void;
+        "onSrcChange"?: (event: DoremiDetectorCustomEvent<any>) => void;
         "showFrame"?: boolean;
         "src"?: string;
     }

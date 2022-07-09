@@ -21,7 +21,7 @@ export const config: Config = {
 			esmLoaderPath: '../loader',
 		},
 		{
-			type: 'dist-custom-elements-bundle',
+			type: 'dist-custom-elements',
 		},
 		{
 			type: 'docs-readme',
@@ -29,7 +29,11 @@ export const config: Config = {
 		{
 			type: 'www',
 			serviceWorker: null, // disable service workers,
-			copy: [{ src: 'opencv' }, { src: '../node_modules/@shoelace-style/shoelace/dist/assets', dest: 'assets' }],
+			copy: [
+				{ src: 'opencv' },
+				{ src: '../node_modules/@shoelace-style/shoelace/dist/assets', dest: 'assets' },
+				{ src: 'favicon.ico' },
+			],
 		},
 	],
 	plugins: [
